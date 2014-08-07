@@ -15,7 +15,9 @@ public:
 	void loginScreen();
 	void mainMenu();
 private:
+	string currentUser;
 	list<Shopper*> Shoppers;
-	list<Games> AllGames;
+	
+	list<Games*> AllGames;
 };
 

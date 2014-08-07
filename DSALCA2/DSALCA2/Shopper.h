@@ -10,19 +10,19 @@ class Shopper :
 public:
 	Shopper(void);
 	~Shopper(void);
-	Shopper(string,int,list<Games*>);
+	Shopper(string,int);
 	void addToCart(Games&);
 	void removeFromCart(int);
 	void printCart();
 	void calculateTotal();
 	float getTotal();
-	void shopperMainMenu();
-	void viewGames();
-	void searchGames();
+	int shopperMainMenu();
+	void viewGames(list<Games*>& );
+	void searchGames(list<Games*>& );
 private:
-	list<Games> CartOfGames;
+	list<Games*> CartOfGames;
 	float totalAmount;	
 	bool sameTotal;
-	list<Games*> shopAllGames;
+	
 };
 

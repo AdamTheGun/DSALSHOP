@@ -83,3 +83,18 @@ void Games::calculateAvgRating()
 	}
 	averageRating = (totalRatingNum/numOfRatings);
 }
+
+string Games::getDeveloper()
+{
+	return ProdDeveloper;
+}
+
+string Games::getPublisher()
+{
+	return ProdPublisher;
+}
+
+string Games::getYear()
+{
+	return ProdYear;
+}

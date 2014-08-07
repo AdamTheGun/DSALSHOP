@@ -45,16 +45,33 @@ void Shop::loginScreen()
 
 	if(temp == "Admin")
 	{
-		
+		currentUser = "Admin";
 	}
 	else
 	{
+		currentUser = "Shopper";
 		Shoppers.push_back(new Shopper(temp,rand()));
 	}
+	mainMenu();
 }	
 
 void Shop::mainMenu()
 {
-	
+	int input;
+	if(currentUser == "Shopper")
+	{
+		input = Shoppers.front()->shopperMainMenu();
+		switch(input)
+			{
+				case 1:Shoppers.front()->viewGames(AllGames);
+					break;
+				case 2:Shoppers.front()->searchGames(AllGames);
+					break;
+				case 3:
+					break;
+				case 4:
+					break;
+			}
+	}
 
 }

@@ -10,7 +10,7 @@ class Product
 {
 public:
 	Product(void);
-	Product(string,string,int,float = -1.0f,int = -1);
+	Product(string,string,int,float = -1.0f,string = "");
 	virtual ~Product(void);
 
 	void printTitle();
@@ -28,7 +28,7 @@ protected:
 	string ProdTitle;
 	string ProdDescription;
 	float ProdCost;
-	int ProdYear;
+	string ProdYear;
 	int ProdID;
 };
 

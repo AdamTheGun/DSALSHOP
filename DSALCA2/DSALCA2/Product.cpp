@@ -12,7 +12,7 @@ Product::Product(void)
 	ProdYear = -1;
 }
 
-Product::Product(string inTitle,string inDescription,int inID,float inCost,int inYear)
+Product::Product(string inTitle,string inDescription,int inID,float inCost,string inYear)
 {
 	ProdTitle = inTitle;
 	ProdDescription = inDescription;
