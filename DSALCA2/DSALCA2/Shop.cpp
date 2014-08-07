@@ -51,6 +51,10 @@ void Shop::loginScreen()
 	{
 		Shoppers.push_back(new Shopper(temp,rand()));
 	}
-	cout << Shoppers.front()->getUserID();
-	cout << Shoppers.front()->getUsername();
 }	
+
+void Shop::mainMenu()
+{
+	
+
+}
