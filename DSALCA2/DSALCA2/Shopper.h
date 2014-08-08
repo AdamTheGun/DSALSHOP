@@ -11,16 +11,16 @@ public:
 	Shopper(void);
 	~Shopper(void);
 	Shopper(string,int);
-	void addToCart(Games&);
+	void addToCart(Games);
 	void removeFromCart(int);
 	void printCart();
 	void calculateTotal();
 	float getTotal();
 	int shopperMainMenu();
-	void viewGames(list<Games*>& );
-	void searchGames(list<Games*>& );
+	void viewGames(list<Games> );
+	void searchGames(list<Games> );
 private:
-	list<Games*> CartOfGames;
+	list<Games> CartOfGames;
 	float totalAmount;	
 	bool sameTotal;
 	

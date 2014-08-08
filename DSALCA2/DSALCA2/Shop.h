@@ -4,6 +4,8 @@
 #include "Shopper.h"
 #include <iostream>
 #include <string>
+#include <sstream>
+#include <fstream>
 
 using namespace std;
 
@@ -14,10 +16,11 @@ public:
 	~Shop(void);
 	void loginScreen();
 	void mainMenu();
+	void setGameLibrary();
+	void displayAllGames();
 private:
-	string currentUser;
 	list<Shopper*> Shoppers;
 	
-	list<Games*> AllGames;
+	list<Games> AllGames;
 };
 

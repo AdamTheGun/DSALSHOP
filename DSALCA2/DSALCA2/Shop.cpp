@@ -45,33 +45,92 @@ void Shop::loginScreen()
 
 	if(temp == "Admin")
 	{
-		currentUser = "Admin";
+
 	}
 	else
 	{
-		currentUser = "Shopper";
 		Shoppers.push_back(new Shopper(temp,rand()));
+		mainMenu();
 	}
-	mainMenu();
 }	
 
 void Shop::mainMenu()
 {
 	int input;
-	if(currentUser == "Shopper")
+	input = Shoppers.front()->shopperMainMenu();
+	switch(input)
 	{
-		input = Shoppers.front()->shopperMainMenu();
-		switch(input)
-			{
-				case 1:Shoppers.front()->viewGames(AllGames);
-					break;
-				case 2:Shoppers.front()->searchGames(AllGames);
-					break;
-				case 3:
-					break;
-				case 4:
-					break;
-			}
+		case 1:Shoppers.front()->viewGames(AllGames);
+			break;
+		case 2:Shoppers.front()->searchGames(AllGames);
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+	}
+}
+
+void Shop::setGameLibrary()
+{
+	string inTitle, inDescription, inGenre, inDeveloper, inPublisher;
+	int inID, inRatingOneStar, inRatingTwoStar, inRatingThreeStar, inRatingFourStar, inRatingFiveStar, inYear;
+	float inCost;
+
+	string tempS;
+	ifstream in("gameList.txt");
+	while(getline(in, inTitle, ','))
+	{
+		inTitle.erase(remove(inTitle.begin(), inTitle.end(), '\n'), inTitle.end());
+
+		getline(in, inDescription, ',');
+		getline(in, inGenre, ',');
+		getline(in, inDeveloper, ',');
+		getline(in, inPublisher, ',');
+
+		getline(in, tempS, ',');
+		inID = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inRatingOneStar = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inRatingTwoStar = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inRatingThreeStar = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inRatingFourStar = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inRatingFiveStar = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inYear = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inCost = (float)atof(tempS.c_str());
+
+		AllGames.push_back(Games(inTitle, inDescription, inGenre, inDeveloper, inPublisher,
+								 inID, inRatingOneStar, inRatingTwoStar, inRatingThreeStar,
+								 inRatingFourStar, inRatingFiveStar, inYear, inCost));
+	}
+}
+
+void Shop::displayAllGames()
+{
+	cout << "List of Games" << endl;
+
+	int num = 1;
+	Games g;
+	list<Games>::iterator GameItor = AllGames.begin();
+	list<Games>::iterator GameEnd = AllGames.end();
+	for(;GameItor != GameEnd; GameItor++)
+	{
+		cout << num << ". " << GameItor->getTitle() << endl;
+		num++;
 	}
 
+	cout << endl;
 }
