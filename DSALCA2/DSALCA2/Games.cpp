@@ -6,7 +6,7 @@ Games::Games(void)
 }
 
 Games::Games(string inTitle,string inDescription,string inGenre,string inDeveloper,string inPublisher,int inID,int inRatingOneStar,int inRatingTwoStar
-	,int inRatingThreeStar,int inRatingFourStar,int inRatingFiveStar,float inCost,int inYear)
+	,int inRatingThreeStar,int inRatingFourStar,int inRatingFiveStar,float inCost,string inYear)
 {
 	ProdGenre = inGenre;
 	ProdDeveloper = inDeveloper;

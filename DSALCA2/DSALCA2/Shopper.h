@@ -3,6 +3,7 @@
 #include "Games.h"
 #include <algorithm>
 #include <list>
+#include <windows.h>
 
 class Shopper :
 	public User
@@ -13,14 +14,19 @@ public:
 	Shopper(string,int);
 	void addToCart(Games&);
 	void removeFromCart(int);
+	void emptyCart();
 	void printCart();
 	void calculateTotal();
 	float getTotal();
-	int shopperMainMenu();
-	void viewGames(list<Games*>& );
-	void searchGames(list<Games*>& );
+	void shopperMainMenu(list<Games> *);
+	void viewGames(list<Games> *);
+	void searchGames(list<Games> *);
+	void cartActions(list<Games> *);
+	void addItemToCartPrint(list<Games> *);
+	void checkOut(list<Games> *);
+	void exitStore(list<Games> *);
 private:
-	list<Games*> CartOfGames;
+	list<Games> CartOfGames;
 	float totalAmount;	
 	bool sameTotal;
 	

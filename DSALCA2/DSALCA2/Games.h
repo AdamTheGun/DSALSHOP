@@ -5,7 +5,7 @@ class Games :
 {
 public:
 	Games(void);
-	Games(string,string,string,string,string,int,int = 0,int = 0,int = 0,int = 0,int = 0, float= -1.0f,int = -1);
+	Games(string,string,string,string,string,int,int = 0,int = 0,int = 0,int = 0,int = 0, float= -1.0f,string = "");
 	~Games(void);
 
 	void printGenre();
