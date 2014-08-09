@@ -18,7 +18,7 @@ Shopper::Shopper(string inUsername,int inID)
 	userID = inID;
 }
 
-void Shopper::addToCart(Games newGame)
+void Shopper::addToCart(Games &newGame)
 {
 	CartOfGames.push_back(newGame);
 	sameTotal = false;
@@ -37,7 +37,6 @@ void Shopper::removeFromCart(int chosenID)
 		if(GameItor->getID() == chosenID)
 		{
 			cout << GameItor->getTitle() << " has been removed from your cart"<< endl;
-			cout << GameItor->getTitle() << " has been removed from your cart";
 			GameItor = CartOfGames.erase(GameItor);
 			isDelete = true;
 			break;
@@ -68,17 +67,12 @@ void Shopper::printCart()
 {
 	list<Games>::iterator GameItor = CartOfGames.begin();
 	list<Games>::iterator GameEndItor = CartOfGames.end();
-<<<<<<< HEAD
 
 	calculateTotal();
 
 	for(;GameItor!=GameEndItor;GameItor++)
 	{
 		cout << "======================================================" << endl << endl; 
-
-	for(;GameItor!=GameEndItor;GameItor++)
-	{
-		cout << "======================================================" << endl;
 		GameItor->printProdInfo();
 		cout << "======================================================" << endl;
 	}
@@ -157,15 +151,10 @@ void Shopper::cartActions(list<Games> *inGames)
 
 void Shopper::checkOut(list<Games> *inGames)
 {
-<<<<<<< HEAD
 	bool check = false;
 	string input;
 	cout << endl << "==================================Check-Out====================================" << endl << endl;
 	printCart();
-=======
-	list<Games>::iterator GameItor = CartOfGames.begin();
-	list<Games>::iterator GameEndItor = CartOfGames.end();
->>>>>>> c07b03107e0e0089b98d6ffbc0029dd2330f516a
 
 	while(!check){
 		cout << "Would you like to check out your items?(Y/N)" << endl << "Input: ";
@@ -306,11 +295,8 @@ void Shopper::viewGames(list<Games> *inGames)
 	int input;
 	bool check = false;
 	list<Games>::iterator GameItor = inGames->begin();
-}
-void Shopper::viewGames(list<Games> inGames)
-{
-	list<Games>::iterator GameItor = inGames.begin();
-	list<Games>::iterator GameEndItor = inGames.end();
+	
+
 	cout << endl << "======================================================" << endl;
 	for(;GameItor != inGames->end();GameItor++)
 	{
@@ -347,10 +333,8 @@ void Shopper::viewGames(list<Games> inGames)
 		case 3:shopperMainMenu(inGames);
 			break;
 		
-		GameItor->getTitle();
 	}
 }
-
 
 
 
@@ -386,8 +370,6 @@ void Shopper::searchGames(list<Games> *inGames)
 
 	cin.clear();
 	cin.ignore( 1000, '\n' );
-		list<Games>::iterator GameItor = inGames.begin();
-		list<Games>::iterator GameEndItor = inGames.end();
 
 	switch(input){
 		case 1:

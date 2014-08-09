@@ -12,7 +12,7 @@ public:
 	Shopper(void);
 	~Shopper(void);
 	Shopper(string,int);
-	void addToCart(Games);
+	void addToCart(Games&);
 	void removeFromCart(int);
 	void emptyCart();
 	void printCart();
@@ -25,10 +25,6 @@ public:
 	void addItemToCartPrint(list<Games> *);
 	void checkOut(list<Games> *);
 	void exitStore(list<Games> *);
-	int shopperMainMenu();
-	void viewGames(list<Games> );
-	void searchGames(list<Games> );
-
 private:
 	list<Games> CartOfGames;
 	float totalAmount;	
