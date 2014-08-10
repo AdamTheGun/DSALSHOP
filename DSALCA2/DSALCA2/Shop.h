@@ -17,6 +17,9 @@ public:
 	void loginScreen();
 	void mainMenu();
 
+	void getGameLibrary(list<Games>&);
+	void displayAllGames();
+
 private:
 	list<Shopper*> Shoppers;
 protected:

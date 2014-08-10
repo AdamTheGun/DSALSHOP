@@ -7,16 +7,19 @@ Games::Games(void)
 
 Games::Games(string inTitle,string inDescription,string inGenre,string inDeveloper,string inPublisher,int inID,int inRatingOneStar,int inRatingTwoStar
 	,int inRatingThreeStar,int inRatingFourStar,int inRatingFiveStar,float inCost,string inYear)
+	: ratingOneStar(inRatingOneStar), ratingTwoStar(inRatingTwoStar), ratingThreeStar(inRatingThreeStar), ratingFourStar(inRatingFourStar), ratingFiveStar(inRatingFiveStar)
 {
 	ProdGenre = inGenre;
 	ProdDeveloper = inDeveloper;
 	ProdPublisher = inPublisher;
+
 	ProdRating.push_back(inRatingOneStar);
 	ProdRating.push_back(inRatingTwoStar);
 	ProdRating.push_back(inRatingThreeStar);
 	ProdRating.push_back(inRatingFourStar);
 	ProdRating.push_back(inRatingFiveStar);
 	calculateAvgRating();
+
 	ProdTitle = inTitle;
 	ProdDescription = inDescription;
 	ProdCost = inCost;
@@ -97,4 +100,26 @@ string Games::getPublisher()
 string Games::getYear()
 {
 	return ProdYear;
+}
+
+string Games::getGenre()
+{
+	return ProdGenre;
+}
+
+int Games::getStarRating(int num)
+{
+	switch(num)
+	{
+	case 1: return ratingOneStar;
+		break;
+	case 2: return ratingTwoStar;
+		break;
+	case 3: return ratingThreeStar;
+		break;
+	case 4: return ratingFourStar;
+		break;
+	case 5: return ratingFiveStar;
+		break;
+	}
 }

@@ -36,13 +36,11 @@ Shop::Shop(void)
 		getline(in, tempS, ',');
 		inRatingFiveStar = (int)atof(tempS.c_str());
 
-		getline(in, inYear, ',');
-
 		getline(in, tempS, ',');
 		inCost = (float)atof(tempS.c_str());
 
+		getline(in, inYear, ',');
 		
-
 		Games game = Games(inTitle, inDescription, inGenre, inDeveloper, inPublisher,
 								 inID, inRatingOneStar, inRatingTwoStar, inRatingThreeStar,
 								 inRatingFourStar, inRatingFiveStar, inCost, inYear);
@@ -101,7 +99,70 @@ void Shop::loginScreen()
 
 void Shop::mainMenu()
 {
-	int input;
 	Shoppers.front()->shopperMainMenu(&AllGames);
 
+}
+
+void Shop::getGameLibrary(list<Games>& tempList)
+{
+	/*string inTitle, inDescription, inGenre, inDeveloper, inPublisher, inYear;
+	int inID, inRatingOneStar, inRatingTwoStar, inRatingThreeStar, inRatingFourStar, inRatingFiveStar;
+	float inCost;
+
+	string tempS;
+	ifstream in("gameList.txt");
+	while(getline(in, inTitle, ','))
+	{
+		inTitle.erase(remove(inTitle.begin(), inTitle.end(), '\n'), inTitle.end());
+
+		getline(in, inDescription, ',');
+		getline(in, inGenre, ',');
+		getline(in, inDeveloper, ',');
+		getline(in, inPublisher, ',');
+
+		getline(in, tempS, ',');
+		inID = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inRatingOneStar = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inRatingTwoStar = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inRatingThreeStar = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inRatingFourStar = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inRatingFiveStar = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inCost = (float)atof(tempS.c_str());
+
+		getline(in, inYear, ',');
+
+		AllGames.push_back(Games(inTitle, inDescription, inGenre, inDeveloper, inPublisher,
+								 inID, inRatingOneStar, inRatingTwoStar, inRatingThreeStar,
+								 inRatingFourStar, inRatingFiveStar, inCost, inYear));
+	}*/
+
+	tempList = AllGames;
+}
+
+void Shop::displayAllGames()
+{
+	cout << "List of Games" << endl;
+
+	int num = 1;
+	list<Games>::iterator GameItor = AllGames.begin();
+	list<Games>::iterator GameEnd = AllGames.end();
+	for(;GameItor != GameEnd; GameItor++)
+	{
+		cout << num << ". " << GameItor->getTitle() << endl;
+		num++;
+	}
+
+	cout << endl;
 }

@@ -75,3 +75,8 @@ string Product::getTitle()
 {
 	return ProdTitle;
 }
+
+string Product::getDescription()
+{
+	return ProdDescription;
+}

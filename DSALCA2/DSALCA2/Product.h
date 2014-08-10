@@ -23,6 +23,7 @@ public:
 	int getID();
 	float getCost();
 	string getTitle();
+	string getDescription();
 
 protected:
 	string ProdTitle;

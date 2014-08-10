@@ -19,11 +19,19 @@ public:
 	string getPublisher();
 	string getDeveloper();
 	string getYear();
+	string getGenre();
+	int getStarRating(int);
+
 private:
 	string ProdGenre;
 	string ProdDeveloper;
 	string ProdPublisher;
 	list<int> ProdRating;
 	float averageRating;
+	int ratingOneStar;
+	int ratingTwoStar;
+	int ratingThreeStar;
+	int ratingFourStar;
+	int ratingFiveStar;
 };
 
