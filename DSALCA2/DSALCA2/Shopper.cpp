@@ -485,19 +485,19 @@ void Shopper::exitStore(list<Games*> &inGames)
 	shopperMainMenu(inGames);
 }
 
-//
-//void Shopper::sortGames(list<Games*> &inGames)
-//{
-//	list<Games*>::iterator GameItor = CartOfGames.begin();
-//	list<Games*>::iterator GameEndItor = CartOfGames.end();
-//	
-//	for(;GameItor!=GameEndItor;GameItor++)
-//	{
-//	inGames.sort(sortByTitle);
-//	}
-//	viewGames(inGames);
-//}
-//
+
+void Shopper::sortGames(list<Games*> &inGames)
+{
+	/*list<Games*>::iterator GameItor = CartOfGames.begin();
+	list<Games*>::iterator GameEndItor = CartOfGames.end();
+	
+	for(;GameItor!=GameEndItor;GameItor++)
+	{
+	inGames.sort(sortByTitle);
+	}
+	viewGames(inGames);*/
+}
+
 //
 //bool Shopper::sortByTitle(Games* const &lhs,Games* const &rhs)
 //{	
