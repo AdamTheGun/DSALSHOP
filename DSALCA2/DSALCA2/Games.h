@@ -16,13 +16,18 @@ public:
 
 	void calculateAvgRating();
 	float getAvgRating();
+<<<<<<< HEAD
+	string getPublisher();
+	string getDeveloper();
+	string getYear();
+	string getGenre();
+	int getStarRating(int);
+
+=======
 	string getPublisher() const;
 	string getDeveloper() const;
 	string getYear() const;
-	string getGenre();
-	int getStarRating(int);
-	
-	
+>>>>>>> 5ccba16738a5aefcc897fb33fa048521d122a33b
 private:
 	string ProdGenre;
 	string ProdDeveloper;

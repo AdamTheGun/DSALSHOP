@@ -40,11 +40,13 @@ Shop::Shop(void)
 		inCost = (float)atof(tempS.c_str());
 
 		getline(in, inYear, ',');
-
-		//Games game = Games(inTitle, inDescription, inGenre, inDeveloper, inPublisher,
-
+		
+<<<<<<< HEAD
+		Games game = Games(inTitle, inDescription, inGenre, inDeveloper, inPublisher,
+=======
 
 		Games* game = new Games(inTitle, inDescription, inGenre, inDeveloper, inPublisher,
+>>>>>>> 5ccba16738a5aefcc897fb33fa048521d122a33b
 								 inID, inRatingOneStar, inRatingTwoStar, inRatingThreeStar,
 								 inRatingFourStar, inRatingFiveStar, inCost, inYear);
 		
@@ -104,12 +106,12 @@ void Shop::loadGame()
 
 void Shop::mainMenu()
 {
-
-	Shoppers.front()->shopperMainMenu(AllGames);
+<<<<<<< HEAD
+	Shoppers.front()->shopperMainMenu(&AllGames);
 
 }
 
-void Shop::getGameLibrary(list<Games*> &tempList)
+void Shop::getGameLibrary(list<Games>& tempList)
 {
 	/*string inTitle, inDescription, inGenre, inDeveloper, inPublisher, inYear;
 	int inID, inRatingOneStar, inRatingTwoStar, inRatingThreeStar, inRatingFourStar, inRatingFiveStar;
@@ -153,16 +155,8 @@ void Shop::getGameLibrary(list<Games*> &tempList)
 								 inID, inRatingOneStar, inRatingTwoStar, inRatingThreeStar,
 								 inRatingFourStar, inRatingFiveStar, inCost, inYear));
 	}*/
-	list<Games*>::iterator GameItor = AllGames.begin();
-	list<Games*>::iterator GameEndItor = AllGames.end();
 
-	for(;GameItor!=GameEndItor;GameItor++)
-	{
-		tempList.push_back(*GameItor);
-	}
-
-	
-	//tempList = &AllGames;
+	tempList = AllGames;
 }
 
 void Shop::displayAllGames()
@@ -170,20 +164,21 @@ void Shop::displayAllGames()
 	cout << "List of Games" << endl;
 
 	int num = 1;
-	list<Games*>::iterator GameItor = AllGames.begin();
-	list<Games*>::iterator GameEnd = AllGames.end();
+	list<Games>::iterator GameItor = AllGames.begin();
+	list<Games>::iterator GameEnd = AllGames.end();
 	for(;GameItor != GameEnd; GameItor++)
 	{
-		cout << num << ". " << (*GameItor)->getTitle() << endl;
+		cout << num << ". " << GameItor->getTitle() << endl;
 		num++;
 	}
 
 	cout << endl;
-
-
+}
+=======
 	if(currentUser == "Shopper")
 	{
 		Shoppers.front()->shopperMainMenu(AllGames);
 	}
 
 }
+>>>>>>> 5ccba16738a5aefcc897fb33fa048521d122a33b
