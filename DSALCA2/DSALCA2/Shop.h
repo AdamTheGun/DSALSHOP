@@ -14,15 +14,21 @@ class Shop
 public:
 	Shop(void);
 	~Shop(void);
-	void loginScreen();
+	void loadGame();
 	void mainMenu();
+<<<<<<< HEAD
 
 	void getGameLibrary(list<Games>&);
 	void displayAllGames();
 
+=======
+	void setGameLibrary();
+	void displayAllGames();
+>>>>>>> 5ccba16738a5aefcc897fb33fa048521d122a33b
 private:
+	string currentUser;
 	list<Shopper*> Shoppers;
-protected:
-	list<Games> AllGames;
+	
+	list<Games*> AllGames;
 };
 

@@ -41,9 +41,15 @@ Shop::Shop(void)
 
 		getline(in, inYear, ',');
 		
+<<<<<<< HEAD
 		Games game = Games(inTitle, inDescription, inGenre, inDeveloper, inPublisher,
+=======
+
+		Games* game = new Games(inTitle, inDescription, inGenre, inDeveloper, inPublisher,
+>>>>>>> 5ccba16738a5aefcc897fb33fa048521d122a33b
 								 inID, inRatingOneStar, inRatingTwoStar, inRatingThreeStar,
 								 inRatingFourStar, inRatingFiveStar, inCost, inYear);
+		
 		AllGames.push_back(game);
 	}
 }
@@ -53,7 +59,7 @@ Shop::~Shop(void)
 {
 }
 
-void Shop::loginScreen()
+void Shop::loadGame()
 {	
 	cout << "===========================================================================" << endl;
 	cout << "====================WELCOME TO AK-DUO VIDEO GAMES STORE====================" << endl;
@@ -88,17 +94,19 @@ void Shop::loginScreen()
 
 	if(temp == "Admin")
 	{
-
+		currentUser = "Admin";
 	}
 	else
 	{
+		currentUser = "Shopper";
 		Shoppers.push_back(new Shopper(temp,rand()));
-		mainMenu();
 	}
+	mainMenu();
 }	
 
 void Shop::mainMenu()
 {
+<<<<<<< HEAD
 	Shoppers.front()->shopperMainMenu(&AllGames);
 
 }
@@ -166,3 +174,11 @@ void Shop::displayAllGames()
 
 	cout << endl;
 }
+=======
+	if(currentUser == "Shopper")
+	{
+		Shoppers.front()->shopperMainMenu(AllGames);
+	}
+
+}
+>>>>>>> 5ccba16738a5aefcc897fb33fa048521d122a33b

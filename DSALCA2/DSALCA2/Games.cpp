@@ -87,17 +87,17 @@ void Games::calculateAvgRating()
 	averageRating = (totalRatingNum/numOfRatings);
 }
 
-string Games::getDeveloper()
+string Games::getDeveloper() const
 {
 	return ProdDeveloper;
 }
 
-string Games::getPublisher()
+string Games::getPublisher() const
 {
 	return ProdPublisher;
 }
 
-string Games::getYear()
+string Games::getYear() const
 {
 	return ProdYear;
 }
