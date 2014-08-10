@@ -159,14 +159,14 @@ void Admin::AddGame()
 	getline(cin, inYear);
 	
 	int nextID = 0;
-	list<Games> tempList;
+	list<Games*> tempList;
 	Shop::getGameLibrary(tempList);
-	list<Games>::iterator GameItor = tempList.begin();
-	list<Games>::iterator GameEnd = tempList.end();
+	list<Games*>::iterator GameItor = tempList.begin();
+	list<Games*>::iterator GameEnd = tempList.end();
 	for(;GameItor != GameEnd; GameItor++)
 	{
-		if(GameItor->getID() > nextID)
-			nextID = GameItor->getID();
+		if((*GameItor)->getID() > nextID)
+			nextID = (*GameItor)->getID();
 	}
 
 	nextID++;
@@ -182,7 +182,7 @@ void Admin::AddGame()
 
 void Admin::RemoveGame()
 {
-	list<Games> tempList;
+	list<Games*> tempList;
 	Shop::getGameLibrary(tempList);
 	Shop::displayAllGames();
 	
@@ -219,8 +219,8 @@ void Admin::RemoveGame()
 	system("cls");
 	cout << "Removed game id: " << id << endl;
 
-	list<Games>::iterator GameItor = tempList.begin();
-	list<Games>::iterator GameEnd = tempList.end();
+	list<Games*>::iterator GameItor = tempList.begin();
+	list<Games*>::iterator GameEnd = tempList.end();
 	for(;GameItor != GameEnd; GameItor++)
 	{
 		getline(line, tempS);
@@ -243,7 +243,7 @@ void Admin::RemoveGame()
 		}
 		else
 		{
-			removedGameTitle = GameItor->getTitle();
+			removedGameTitle = (*GameItor)->getTitle();
 			GameItor = tempList.erase(GameItor);
 			GameItor--;
 		}
@@ -268,7 +268,7 @@ void Admin::RemoveGame()
 	GameEnd = tempList.end();
 	for(;GameItor != GameEnd; GameItor++)
 	{
-		cout << num << ". " << GameItor->getTitle() << endl;
+		cout << num << ". " << (*GameItor)->getTitle() << endl;
 		num++;
 	}
 }
@@ -279,7 +279,7 @@ void Admin::EditDetail()
 	int inRatingOneStar, inRatingTwoStar, inRatingThreeStar, inRatingFourStar, inRatingFiveStar;
 	float inCost;
 
-	list<Games> tempList;
+	list<Games*> tempList;
 	Shop::getGameLibrary(tempList);
 	Shop::displayAllGames();
 
@@ -315,8 +315,8 @@ void Admin::EditDetail()
 	ofstream temp;
 	temp.open("temp.txt", ios_base::app);
 
-	list<Games>::iterator GameItor = tempList.begin();
-	list<Games>::iterator GameEnd = tempList.end();
+	list<Games*>::iterator GameItor = tempList.begin();
+	list<Games*>::iterator GameEnd = tempList.end();
 	for(;GameItor != GameEnd; GameItor++)
 	{
 		getline(line, tempS);
@@ -343,21 +343,21 @@ void Admin::EditDetail()
 			int edit = 0;
 			string sect = "";
 
-			cout << "Editing " << GameItor->getTitle() << endl;
+			cout << "Editing " << (*GameItor)->getTitle() << endl;
 			cout << "Select a section to edit" << endl;
-			cout << "1. Title: " << GameItor->getTitle() << endl;
-			cout << "2. Description: " << GameItor->getDescription() << endl;
-			cout << "3. Genre: " << GameItor->getGenre() << endl;
-			cout << "4. Developer: " << GameItor->getDeveloper() << endl;
-			cout << "5. Publisher: " << GameItor->getPublisher() << endl;
+			cout << "1. Title: " << (*GameItor)->getTitle() << endl;
+			cout << "2. Description: " << (*GameItor)->getDescription() << endl;
+			cout << "3. Genre: " << (*GameItor)->getGenre() << endl;
+			cout << "4. Developer: " << (*GameItor)->getDeveloper() << endl;
+			cout << "5. Publisher: " << (*GameItor)->getPublisher() << endl;
 			getline(line, sect, ','); // Game ID
 			cout << "6. One-Star Rating" << endl;
 			cout << "7. Two-Star Rating" << endl;
 			cout << "8. Three-Star Rating" << endl;
 			cout << "9. Four-Star Rating" << endl;
 			cout << "10. Five-Star Rating" << endl;
-			cout << "11. Cost: " << GameItor->getCost() << endl;
-			cout << "12. Year: " << GameItor->getYear() << endl;
+			cout << "11. Cost: " << (*GameItor)->getCost() << endl;
+			cout << "12. Year: " << (*GameItor)->getYear() << endl;
 
 			//cout << "Editing " << GameItor->getTitle() << endl;
 			//cout << "Select a section to edit" << endl;
@@ -432,7 +432,7 @@ void Admin::EditDetail()
 			string confirmEdit= "";
 
 			system("cls");
-			cout << "Editing " << editName << " of " << GameItor->getTitle() << endl;
+			cout << "Editing " << editName << " of " << (*GameItor)->getTitle() << endl;
 			if(edit > 0 && edit < 6)
 			{
 				while(confirm == false)
@@ -595,7 +595,7 @@ void Admin::EditDetail()
 				inYear = editString;
 			}
 
-			gameID = GameItor->getID();
+			gameID = (*GameItor)->getID();
 
 			for(times = 0; times < 12; times++)
 			{
@@ -603,29 +603,29 @@ void Admin::EditDetail()
 				{
 					switch(edit)
 					{
-					case 1: inTitle = GameItor->getTitle();
+					case 1: inTitle = (*GameItor)->getTitle();
 						break;
-					case 2: inDescription = GameItor->getDescription();
+					case 2: inDescription = (*GameItor)->getDescription();
 						break;
-					case 3: inGenre = GameItor->getGenre();
+					case 3: inGenre = (*GameItor)->getGenre();
 						break;
-					case 4: inDeveloper = GameItor->getDeveloper();
+					case 4: inDeveloper = (*GameItor)->getDeveloper();
 						break;
-					case 5: inPublisher = GameItor->getPublisher();
+					case 5: inPublisher = (*GameItor)->getPublisher();
 						break;
-					case 6: inRatingOneStar = GameItor->getStarRating(1);
+					case 6: inRatingOneStar = (*GameItor)->getStarRating(1);
 						break;
-					case 7: inRatingTwoStar = GameItor->getStarRating(2);
+					case 7: inRatingTwoStar = (*GameItor)->getStarRating(2);
 						break;
-					case 8: inRatingThreeStar = GameItor->getStarRating(3);
+					case 8: inRatingThreeStar = (*GameItor)->getStarRating(3);
 						break;
-					case 9: inRatingFourStar = GameItor->getStarRating(4);
+					case 9: inRatingFourStar = (*GameItor)->getStarRating(4);
 						break;
-					case 10: inRatingFiveStar = GameItor->getStarRating(5);
+					case 10: inRatingFiveStar = (*GameItor)->getStarRating(5);
 						break;
-					case 11: inCost = GameItor->getCost();
+					case 11: inCost = (*GameItor)->getCost();
 						break;
-					case 12: inYear = GameItor->getYear();
+					case 12: inYear = (*GameItor)->getYear();
 						break;
 					}
 				}
