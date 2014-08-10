@@ -289,7 +289,10 @@ void Admin::EditDetail()
 
 	while(valid == false)
 	{
-		cin >> id;
+		string str;
+
+		getline(cin, str);
+		id = (int)atof(str.c_str());
 
 		if(id > 0 && id < tempList.size())
 		{
@@ -309,17 +312,15 @@ void Admin::EditDetail()
 	int num = 1;
 	int gameID;
 	int times = 0;
-	string removedGameTitle;
 
 	ifstream line("gameList.txt");
 	ofstream temp;
 	temp.open("temp.txt", ios_base::app);
-
 	list<Games*>::iterator GameItor = tempList.begin();
 	list<Games*>::iterator GameEnd = tempList.end();
 	for(;GameItor != GameEnd; GameItor++)
 	{
-		getline(line, tempS);
+		getline(line, tempS, '\n');
 
 		if(num != id)
 		{
@@ -331,6 +332,10 @@ void Admin::EditDetail()
 			if(num == 1)
 			{
 				temp << tempS;
+			}
+			else if(num == id + 1) // For some reason, the title for the next line is removed, so a manual replacement had to be done
+			{
+				temp << ",\n" << (*GameItor)->getTitle() << "," << tempS;
 			}
 			else
 			{
@@ -597,11 +602,11 @@ void Admin::EditDetail()
 
 			gameID = (*GameItor)->getID();
 
-			for(times = 0; times < 12; times++)
+			for(times = 0; times < 13; times++)
 			{
 				if(times != edit)
 				{
-					switch(edit)
+					switch(times)
 					{
 					case 1: inTitle = (*GameItor)->getTitle();
 						break;

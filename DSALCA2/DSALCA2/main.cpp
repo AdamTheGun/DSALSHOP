@@ -11,8 +11,8 @@ void main()
 {
 	Admin admin;
 	admin.EditDetail();
-	Shop mainShop;
-	mainShop.loadGame();
+	//Shop mainShop;
+	//mainShop.loadGame();
 }
 
 
