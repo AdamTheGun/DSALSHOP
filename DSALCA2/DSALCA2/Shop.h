@@ -16,8 +16,6 @@ public:
 	~Shop(void);
 	void loginScreen();
 	void mainMenu();
-	void setGameLibrary();
-	void displayAllGames();
 
 private:
 	list<Shopper*> Shoppers;

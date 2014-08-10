@@ -10,10 +10,6 @@ void main()
 {
 	Shop mainShop;
 	//mainShop.loginScreen();
-	mainShop.setGameLibrary();
-	mainShop.displayAllGames();
-	
-
 }
 
 

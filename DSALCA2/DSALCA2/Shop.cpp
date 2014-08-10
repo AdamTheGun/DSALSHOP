@@ -90,27 +90,18 @@ void Shop::loginScreen()
 
 	if(temp == "Admin")
 	{
-		currentUser = "Admin";
+
 	}
 	else
 	{
-		currentUser = "Shopper";
 		Shoppers.push_back(new Shopper(temp,rand()));
+		mainMenu();
 	}
-	mainMenu();
 }	
 
 void Shop::mainMenu()
 {
 	int input;
-	if(currentUser == "Shopper")
-	{
-		Shoppers.front()->shopperMainMenu(&AllGames);
-		
-	}
+	Shoppers.front()->shopperMainMenu(&AllGames);
 
-}
-void Shop::setGameLibrary()
-{
-	
 }
