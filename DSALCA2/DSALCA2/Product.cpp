@@ -61,17 +61,17 @@ void Product::printProdInfo()
 	printID();
 }
 
-int Product::getID()
+int Product::getID() const
 {
 	return ProdID;
 }
 
-float Product::getCost()
+float Product::getCost() const
 {
 	return ProdCost;
 }
 
-string Product::getTitle()
+string Product::getTitle() const
 {
 	return ProdTitle;
 }

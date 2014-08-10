@@ -20,9 +20,9 @@ public:
 	void printID();
 	void virtual printProdInfo() = 0;
 
-	int getID();
-	float getCost();
-	string getTitle();
+	int getID() const;
+	float getCost() const;
+	string getTitle() const;
 
 protected:
 	string ProdTitle;

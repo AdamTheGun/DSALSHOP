@@ -43,9 +43,10 @@ Shop::Shop(void)
 
 		
 
-		Games game = Games(inTitle, inDescription, inGenre, inDeveloper, inPublisher,
+		Games* game = new Games(inTitle, inDescription, inGenre, inDeveloper, inPublisher,
 								 inID, inRatingOneStar, inRatingTwoStar, inRatingThreeStar,
 								 inRatingFourStar, inRatingFiveStar, inCost, inYear);
+		
 		AllGames.push_back(game);
 	}
 }
@@ -55,7 +56,7 @@ Shop::~Shop(void)
 {
 }
 
-void Shop::loginScreen()
+void Shop::loadGame()
 {	
 	cout << "===========================================================================" << endl;
 	cout << "====================WELCOME TO AK-DUO VIDEO GAMES STORE====================" << endl;
@@ -102,15 +103,9 @@ void Shop::loginScreen()
 
 void Shop::mainMenu()
 {
-	int input;
 	if(currentUser == "Shopper")
 	{
-		Shoppers.front()->shopperMainMenu(&AllGames);
-		
+		Shoppers.front()->shopperMainMenu(AllGames);
 	}
 
-}
-void Shop::setGameLibrary()
-{
-	
 }

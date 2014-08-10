@@ -16,9 +16,9 @@ public:
 
 	void calculateAvgRating();
 	float getAvgRating();
-	string getPublisher();
-	string getDeveloper();
-	string getYear();
+	string getPublisher() const;
+	string getDeveloper() const;
+	string getYear() const;
 private:
 	string ProdGenre;
 	string ProdDeveloper;
