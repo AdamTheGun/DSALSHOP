@@ -2,6 +2,7 @@
 
 #include "Games.h"
 #include "Shopper.h"
+#include "Admin.h"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -16,10 +17,11 @@ public:
 	~Shop(void);
 	void loadGame();
 	void mainMenu();
+	void administrationMode();
 
 	void getGameLibrary(list<Games*>&);
 	void displayAllGames();
-	void setGameLibrary();
+	void refreshList();
 
 private:
 	string currentUser;

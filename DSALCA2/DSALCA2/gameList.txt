@@ -1,7 +1,5 @@
-Thief,All about Satay,Satay,SP Student,Singapore Polytechnic,2,2,4,5,13,100,2.99,2014,
-Assassin's Creed 4,All about Satay,Satay,SP Student,Singapore Polytechnic,3,2,4,5,13,100,2.99,2014,
-Battlefield 4,All about Satay,Satay,SP Student,Singapore Polytechnic,4,2,4,5,13,100,2.99,2014,
-Street Fighter,Fighting in Street,Action,Someone,Somebody,5,32,58,69,183,561,2.39,1994,
-Hitman,Kill people as hitman,Stealth,IO Interactive,Square Enix,6,432,352,34,3532,1242,59.99,2012,
-Bioshock,BioShock is a first-person shooter with role-playing game customization and stealth elements and is similar to System Shock 2.,FPS,2K Boston,2K Games,7,123,345,53,1040,2403,29.99,2007,
-Mafia 2,Vito Scaletta has started to make a name for himself on the streets of Empire Bay as someone who can be trusted to get a job done.,Action,2K Czech,2K Games,8,534,354,234,2342,2411,19.99,2010
+Assassin's Creed 4,Killing bad guy as pirate and assassin,Action,Ubisoft,Ubisoft,106,21,48,52,134,1523,51.99,2013,
+Battlefield 4,Become an army man and shoot people,FPS,EA Digital Illusions CE,Electronic Arts,3,216,39,50,139,3590,62.99,2013,
+Hitman,Kill people as hitman,Stealth,IO Interactive,Square Enix,4,432,352,34,3532,1242,59.99,2012,
+Bioshock,BioShock is a first-person shooter with role-playing game customization and stealth elements and is similar to System Shock 2.,FPS,2K Boston,2K Games,5,123,345,53,1040,2403,29.99,2007,
+Mafia 2,Vito Scaletta has started to make a name for himself on the streets of Empire Bay as someone who can be trusted to get a job done.,Action,2K Czech,2K Games,6,534,354,234,2342,2411,19.99,2010

@@ -10,11 +10,67 @@ Admin::~Admin(void)
 {
 }
 
+void Admin::AdminMenu()
+{
+	int actionNum = 0;
+
+	Shop mainShop;
+	
+	cout << endl;
+	cout << "Welcome admin!" << endl;
+
+	while (actionNum != 5)
+	{
+		cout << endl;
+		cout << "Select an action" << endl;
+		cout << "1. Add Game" << endl;
+		cout << "2. Remove Game" << endl;
+		cout << "3. Edit Game Details" << endl;
+		cout << "4. Display Games" << endl;
+		cout << "5. Exit" << endl << endl;
+		cout << "Input: ";
+		cin >> actionNum;
+
+		if(actionNum)
+		{
+			if(actionNum > 0 && actionNum < 6)
+			{
+				cin.ignore();
+				switch(actionNum)
+				{
+				case 1: AddGame();
+					break;
+				case 2: RemoveGame();
+					break;
+				case 3: EditDetail();
+					break;
+				case 4: mainShop.refreshList();
+						mainShop.displayAllGames();
+					break;
+					// ActionNum 5 for exit
+				}
+			}
+			else
+			{
+				cout << "Invalid input" << endl << endl;
+				system("cls");
+			}
+		}
+		else
+		{
+			cout << "Invalid input" << endl << endl;
+			system("cls");
+		}
+	}
+}
+
 void Admin::AddGame()
 {
 	string inTitle, inDescription, inGenre, inDeveloper, inPublisher, inYear;
 	int inRatingOneStar, inRatingTwoStar, inRatingThreeStar, inRatingFourStar, inRatingFiveStar;
 	float inCost;
+
+	Shop mainShop;
 
 	cout << "Title: ";
 	getline(cin, inTitle);
@@ -35,7 +91,6 @@ void Admin::AddGame()
 	{
 		cout << "One-Star Rating: ";
 		cin >> inRatingOneStar;
-		cout << endl;
 
 		if(inRatingOneStar)
 		{
@@ -56,7 +111,6 @@ void Admin::AddGame()
 	{
 		cout << "Two-Star Rating: ";
 		cin >> inRatingTwoStar;
-		cout << endl;
 
 		if(inRatingTwoStar)
 		{
@@ -77,7 +131,6 @@ void Admin::AddGame()
 	{
 		cout << "Three-Star Rating: ";
 		cin >> inRatingThreeStar;
-		cout << endl;
 
 		if(inRatingThreeStar)
 		{
@@ -98,7 +151,6 @@ void Admin::AddGame()
 	{
 		cout << "Four-Star Rating: ";
 		cin >> inRatingFourStar;
-		cout << endl;
 
 		if(inRatingFourStar)
 		{
@@ -119,7 +171,6 @@ void Admin::AddGame()
 	{
 		cout << "Five-Star Rating: ";
 		cin >> inRatingFiveStar;
-		cout << endl;
 
 		if(inRatingFiveStar)
 		{
@@ -140,7 +191,6 @@ void Admin::AddGame()
 	{
 		cout << "Cost: ";
 		cin >> inCost;
-		cout << endl;
 
 		if(inCost)
 		{
@@ -157,10 +207,13 @@ void Admin::AddGame()
 
 	cout << "Year: ";
 	getline(cin, inYear);
+
+	cout << endl;
+	cout << "The game " << inTitle << " had been added to the game library." << endl << endl;
 	
 	int nextID = 0;
 	list<Games*> tempList;
-	Shop::getGameLibrary(tempList);
+	mainShop.getGameLibrary(tempList);
 	list<Games*>::iterator GameItor = tempList.begin();
 	list<Games*>::iterator GameEnd = tempList.end();
 	for(;GameItor != GameEnd; GameItor++)
@@ -182,9 +235,10 @@ void Admin::AddGame()
 
 void Admin::RemoveGame()
 {
+	Shop mainShop;
 	list<Games*> tempList;
-	Shop::getGameLibrary(tempList);
-	Shop::displayAllGames();
+	mainShop.getGameLibrary(tempList);
+	mainShop.displayAllGames();
 	
 	bool valid = false;
 	int id;
@@ -261,7 +315,7 @@ void Admin::RemoveGame()
 	num = 1;
 	system("cls");
 
-	cout << "Removed " << removedGameTitle << endl << endl;
+	cout << "Removed " << removedGameTitle << " from the game library" << endl << endl;
 	cout << "New list of games" << endl;
 
 	GameItor = tempList.begin();
@@ -271,6 +325,8 @@ void Admin::RemoveGame()
 		cout << num << ". " << (*GameItor)->getTitle() << endl;
 		num++;
 	}
+
+	cout << endl;
 }
 
 void Admin::EditDetail()
@@ -279,9 +335,11 @@ void Admin::EditDetail()
 	int inRatingOneStar, inRatingTwoStar, inRatingThreeStar, inRatingFourStar, inRatingFiveStar;
 	float inCost;
 
+	Shop mainShop;
+
 	list<Games*> tempList;
-	Shop::getGameLibrary(tempList);
-	Shop::displayAllGames();
+	mainShop.getGameLibrary(tempList);
+	mainShop.displayAllGames();
 
 	bool valid = false;
 	int id;
@@ -332,6 +390,10 @@ void Admin::EditDetail()
 			{
 				temp << tempS;
 			}
+			else if(num == id + 1)
+			{
+				temp << ",\n" << (*GameItor)->getTitle() << "," << tempS;
+			}
 			else
 			{
 				temp << ",\n" << tempS;
@@ -358,22 +420,6 @@ void Admin::EditDetail()
 			cout << "10. Five-Star Rating" << endl;
 			cout << "11. Cost: " << (*GameItor)->getCost() << endl;
 			cout << "12. Year: " << (*GameItor)->getYear() << endl;
-
-			//cout << "Editing " << GameItor->getTitle() << endl;
-			//cout << "Select a section to edit" << endl;
-			//cout << "1. Title: " << getline(line, sect, ',') << endl;
-			//cout << "2. Description: " << getline(line, sect, ',') << endl;
-			//cout << "3. Genre: " << getline(line, sect, ',') << endl;
-			//cout << "4. Developer: " << getline(line, sect, ',') << endl;
-			//cout << "5. Publisher: " << getline(line, sect, ',') << endl;
-			//getline(line, sect, ','); // Game ID
-			//cout << "6. One-Star Rating: " << getline(line, sect, ',') << endl;
-			//cout << "7. Two-Star Rating: " << getline(line, sect, ',') << endl;
-			//cout << "8. Three-Star Rating: " << getline(line, sect, ',') << endl;
-			//cout << "9. Four-Star Rating: " << getline(line, sect, ',') << endl;
-			//cout << "10. Five-Star Rating: " << getline(line, sect, ',') << endl;
-			//cout << "11. Cost: " << getline(line, sect, ',') << endl;
-			//cout << "12. Year: " << getline(line, sect, ',') << endl;
 
 			string editName = "";
 
@@ -597,11 +643,11 @@ void Admin::EditDetail()
 
 			gameID = (*GameItor)->getID();
 
-			for(times = 0; times < 12; times++)
+			for(times = 1; times < 13; times++)
 			{
 				if(times != edit)
 				{
-					switch(edit)
+					switch(times)
 					{
 					case 1: inTitle = (*GameItor)->getTitle();
 						break;
@@ -658,4 +704,8 @@ void Admin::EditDetail()
 	// Closing all files for further modifications
 	temp.close();
 	line.close();
+
+	// Replace old file with updated list
+	remove("gameList.txt");
+	rename("temp.txt", "gameList.txt");
 }

@@ -9,8 +9,6 @@ using namespace std;
 
 void main()
 {
-	//Admin admin;
-	//admin.EditDetail();
 	Shop mainShop;
 	mainShop.loadGame();
 }

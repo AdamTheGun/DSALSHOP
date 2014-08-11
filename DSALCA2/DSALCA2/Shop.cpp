@@ -3,7 +3,8 @@
 
 Shop::Shop(void)
 {
-	string inTitle, inDescription, inGenre, inDeveloper, inPublisher,inYear;
+	refreshList();
+	/*string inTitle, inDescription, inGenre, inDeveloper, inPublisher,inYear;
 	int inID, inRatingOneStar, inRatingTwoStar, inRatingThreeStar, inRatingFourStar, inRatingFiveStar;
 	float inCost;
 
@@ -41,7 +42,7 @@ Shop::Shop(void)
 
 		getline(in, inYear, ',');
 
-		//Games game = Games(inTitle, inDescription, inGenre, inDeveloper, inPublisher,
+		Games game = Games(inTitle, inDescription, inGenre, inDeveloper, inPublisher,
 
 
 		Games* game = new Games(inTitle, inDescription, inGenre, inDeveloper, inPublisher,
@@ -49,7 +50,7 @@ Shop::Shop(void)
 								 inRatingFourStar, inRatingFiveStar, inCost, inYear);
 		
 		AllGames.push_back(game);
-	}
+	}*/
 }
 
 
@@ -93,20 +94,25 @@ void Shop::loadGame()
 	if(temp == "Admin")
 	{
 		currentUser = "Admin";
+		administrationMode();
 	}
 	else
 	{
 		currentUser = "Shopper";
 		Shoppers.push_back(new Shopper(temp,rand()));
+		mainMenu();
 	}
-	mainMenu();
 }	
 
 void Shop::mainMenu()
 {
-
 	Shoppers.front()->shopperMainMenu(AllGames);
+}
 
+void Shop::administrationMode()
+{
+	Admin admin;
+	admin.AdminMenu();
 }
 
 void Shop::getGameLibrary(list<Games*> &tempList)
@@ -186,4 +192,57 @@ void Shop::displayAllGames()
 		Shoppers.front()->shopperMainMenu(AllGames);
 	}
 
+}
+
+void Shop::refreshList()
+{
+	AllGames.clear();
+
+	string inTitle, inDescription, inGenre, inDeveloper, inPublisher,inYear;
+	int inID, inRatingOneStar, inRatingTwoStar, inRatingThreeStar, inRatingFourStar, inRatingFiveStar;
+	float inCost;
+
+	string tempS;
+	ifstream in("gameList.txt");
+	while(getline(in, inTitle, ','))
+	{
+		inTitle.erase(remove(inTitle.begin(), inTitle.end(), '\n'), inTitle.end());
+
+		getline(in, inDescription, ',');
+		getline(in, inGenre, ',');
+		getline(in, inDeveloper, ',');
+		getline(in, inPublisher, ',');
+
+		getline(in, tempS, ',');
+		inID = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inRatingOneStar = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inRatingTwoStar = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inRatingThreeStar = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inRatingFourStar = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inRatingFiveStar = (int)atof(tempS.c_str());
+
+		getline(in, tempS, ',');
+		inCost = (float)atof(tempS.c_str());
+
+		getline(in, inYear, ',');
+
+		//Games game = Games(inTitle, inDescription, inGenre, inDeveloper, inPublisher,
+
+
+		Games* game = new Games(inTitle, inDescription, inGenre, inDeveloper, inPublisher,
+								 inID, inRatingOneStar, inRatingTwoStar, inRatingThreeStar,
+								 inRatingFourStar, inRatingFiveStar, inCost, inYear);
+		
+		AllGames.push_back(game);
+	}
 }
