@@ -361,7 +361,7 @@ void Shopper::viewGames(list<Games*> &inGames)
 			break;
 		case 2:searchGames(inGames);
 			break;
-		case 3:sortGames(inGames);
+		case 3://sortGames(inGames);
 			break;
 		case 4:shopperMainMenu(inGames);
 			break;
@@ -485,19 +485,19 @@ void Shopper::exitStore(list<Games*> &inGames)
 	shopperMainMenu(inGames);
 }
 
-
-void Shopper::sortGames(list<Games*> &inGames)
-{
-	/*list<Games*>::iterator GameItor = CartOfGames.begin();
-	list<Games*>::iterator GameEndItor = CartOfGames.end();
-	
-	for(;GameItor!=GameEndItor;GameItor++)
-	{
-	inGames.sort(sortByTitle);
-	}
-	viewGames(inGames);*/
-}
-
+//
+//void Shopper::sortGames(list<Games*> &inGames)
+//{
+//	list<Games*>::iterator GameItor = CartOfGames.begin();
+//	list<Games*>::iterator GameEndItor = CartOfGames.end();
+//	
+//	for(;GameItor!=GameEndItor;GameItor++)
+//	{
+//	inGames.sort(sortByTitle);
+//	}
+//	viewGames(inGames);
+//}
+//
 //
 //bool Shopper::sortByTitle(Games* const &lhs,Games* const &rhs)
 //{	
@@ -505,5 +505,5 @@ void Shopper::sortGames(list<Games*> &inGames)
 //	else if(lhs->getTitle()>rhs->getTitle()) return false;
 //}
 //
-//
-//
+
+
