@@ -477,6 +477,8 @@ void Admin::EditDetail()
 			float editFloat = 0;
 			string confirmEdit= "";
 
+			// Editing Section
+#pragma region Edit
 			system("cls");
 			cout << "Editing " << editName << " of " << (*GameItor)->getTitle() << endl;
 			if(edit > 0 && edit < 6)
@@ -484,8 +486,7 @@ void Admin::EditDetail()
 				while(confirm == false)
 				{
 					cout << "Enter edit:" << endl;
-					cin >> editString;
-					cout << endl;
+					getline(cin, editString);
 
 					while(correct == false)
 					{
@@ -618,8 +619,7 @@ void Admin::EditDetail()
 				while(confirm == false)
 				{
 					cout << "Enter edit:" << endl;
-					cin >> editString;
-					cout << endl;
+					getline(cin, editString);
 
 					while(correct == false)
 					{
@@ -640,6 +640,7 @@ void Admin::EditDetail()
 
 				inYear = editString;
 			}
+#pragma endregion
 
 			gameID = (*GameItor)->getID();
 
